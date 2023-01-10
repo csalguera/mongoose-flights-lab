@@ -5,7 +5,12 @@ const Schema = mongoose.Schema
 const flightSchema = new Schema({
   airline: String,
   airport: {type: String, default: 'DEN'},
-  flightNo: Number,
+  flightNo: {
+    type: Number,
+    default: function() {
+      return Math.floor(Math.random() * 9999)
+    }
+  },
   departs: {type: Date}
 })
 

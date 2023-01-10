@@ -8,7 +8,7 @@ const flightSchema = new Schema({
   flightNo: {
     type: Number,
     default: function() {
-      return Math.floor(Math.random() * 9999)
+      return Math.floor(Math.random() * (9999 - 10) + 10)
     }
   },
   departs: {type: Date}

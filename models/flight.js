@@ -11,7 +11,7 @@ const flightSchema = new Schema({
       return Math.floor(Math.random() * (9999 - 10) + 10)
     }
   },
-  departs: {type: Date}
+  departs: Date
 })
 
 const Flight = mongoose.model('Flight', flightSchema)

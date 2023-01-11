@@ -1,4 +1,5 @@
 <%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/movies/new.css">
 <%- include('../partials/nav') %>
 
 <main>
@@ -8,31 +9,25 @@
   method="POST"
   autocomplete="off"
   >
-    <div>
-      <label for="airline">Airline:</label>
-      <select name="airline" id="airline">
-        <option value="<%= flight.airline %>"><%= flight.airline %></option>
-          <option value="American Airlines">American Airlines</option>
-          <option value="Southwest Airlines">Southwest Airlines</option>
-          <option value="United Airlines">United Airlines</option>
-      </select>
-    </div>
-    <div>
-      <label for="airport">Airport:</label>
-        <select name="airport" id="airport">
-          <option value="<%= flight.airport %>"><%= flight.airport %></option>
-          <option value="AUS">AUS</option>
-          <option value="DFW">DFW</option>
-          <option value="DEN">DEN</option>
-          <option value="LAX">LAX</option>
-          <option value="SAN">SAN</option>
-        </select>
-    </div>
-    <div>
-      <label for="datetime">Date and Time:</label>
-      <input type="datetime-local" id="datetime" name="departs" value="<%= flight.departs.toISOString().slice(0, 16) %>">
-    </div>
-    <button type="submit">Add Flight</button>
+  <label for="airline">Airline:</label>
+  <select name="airline" id="airline">
+    <option value="<%= flight.airline %>"><%= flight.airline %></option>
+    <option value="American Airlines">American Airlines</option>
+    <option value="Southwest Airlines">Southwest Airlines</option>
+    <option value="United Airlines">United Airlines</option>
+  </select>
+  <label for="airport">Airport:</label>
+  <select name="airport" id="airport">
+    <option value="<%= flight.airport %>"><%= flight.airport %></option>
+    <option value="AUS">AUS</option>
+    <option value="DFW">DFW</option>
+    <option value="DEN">DEN</option>
+    <option value="LAX">LAX</option>
+    <option value="SAN">SAN</option>
+  </select>
+  <label for="datetime">Date and Time:</label>
+  <input type="datetime-local" id="datetime" name="departs" value="<%= flight.departs.toISOString().slice(0, 16) %>">
+  <button type="submit">Edit Flight</button>
   </form>
 </main>
 

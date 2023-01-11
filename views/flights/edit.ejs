@@ -3,23 +3,24 @@
 
 <main>
   <h1><%= title %></h1>
-  <form action="/flights/<%= flight._id %>" method="POST" autocomplete="off">
+  <form
+  action="/flights/<%= flight._id %>?_method=PUT"
+  method="POST"
+  autocomplete="off"
+  >
     <div>
       <label for="airline">Airline:</label>
       <select name="airline" id="airline">
-        <option value="<%= flight.airline %>">
-          <%= flight.airline %></option>
-        <option value="<%= flight.airline === 'SouthWest Airlines' ? 'American Airlines' : flight.airline === 'United Airlines' ? 'American Airlines' : 'SouthWest Airlines' %>">
-          <%= flight.airline === 'SouthWest Airlines' ? 'American Airlines' : flight.airline === 'United Airlines' ? 'American Airlines' : 'SouthWest Airlines' %>
-        </option>
-        <option value="<%= flight.airline === 'United Airlines' ? 'SouthWest Airlines' : flight.airline === 'American Airlines' ? 'United Airlines' : 'United Airlines' %>">
-          <%= flight.airline === 'United Airlines' ? 'SouthWest Airlines' : flight.airline === 'American Airlines' ? 'United Airlines' : 'United Airlines' %>
-        </option>
+        <option value="<%= flight.airline %>"><%= flight.airline %></option>
+          <option value="American Airlines">American Airlines</option>
+          <option value="Southwest Airlines">Southwest Airlines</option>
+          <option value="United Airlines">United Airlines</option>
       </select>
     </div>
     <div>
       <label for="airport">Airport:</label>
         <select name="airport" id="airport">
+          <option value="<%= flight.airport %>"><%= flight.airport %></option>
           <option value="AUS">AUS</option>
           <option value="DFW">DFW</option>
           <option value="DEN">DEN</option>
@@ -29,7 +30,7 @@
     </div>
     <div>
       <label for="datetime">Date and Time:</label>
-      <input type="datetime-local" id="datetime" name="departs">
+      <input type="datetime-local" id="datetime" name="departs" value="<%= flight.departs.toISOString().slice(0, 16) %>">
     </div>
     <button type="submit">Add Flight</button>
   </form>

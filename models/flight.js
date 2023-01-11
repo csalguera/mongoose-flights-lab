@@ -11,7 +11,12 @@ const flightSchema = new Schema({
       return Math.floor(Math.random() * (9999 - 10) + 10)
     }
   },
-  departs: Date
+  departs: {
+    type: Date,
+    default: function() {
+      return new Date().setFullYear(new Date().getFullYear() + 1)
+    }
+  }
 })
 
 const Flight = mongoose.model('Flight', flightSchema)

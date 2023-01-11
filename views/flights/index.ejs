@@ -3,18 +3,31 @@
 
 <main>
   <h1><%= title %></h1>
-  <% flights.forEach(flight => { %>
-    <ul>
-      <li>
-        <%= flight.airline %>
-        <%= flight.airport %>
-        <a href="/flights/<%= flight._id %>">
-          <%= flight.flightNo %>
-        </a>
-        <%= flight.departs %>
-      </li>
-    </ul>
-  <% }) %>
+  <table>
+    <thead>
+      <tr>
+        <th>FlightNo</th>
+        <th></th>
+        <th>REMOVE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% flights.forEach(flight => { %>
+        <tr>
+          <td><%= flight.flightNo %></td>
+          <td><a href="/flights/<%= flight._id %>">DETAILS</a></td>
+          <td>
+            <form
+            action="/flights/<%= flight._id %>?_method=DELETE"
+            method="POST"
+            >
+              <button>X</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+</table>
 </main>
 
 <%- include('../partials/footer') %>

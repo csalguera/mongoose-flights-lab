@@ -49,8 +49,7 @@ body > nav {
   padding: 0 20px 0 30px;
 }
 
-nav > i {
-  width: 34px;
+nav > #fa-plane {
   object-fit: contain;
   margin-right: auto;
 }

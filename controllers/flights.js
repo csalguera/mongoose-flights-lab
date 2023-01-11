@@ -15,8 +15,12 @@ function index(req, res) {
 }
 
 function newFlight(req, res) {
+  const newFlight = new Flight()
+  const dt = newFlight.departs
+  const departsDate = dt.toISOString().slice(0, 16)
   res.render('flights/new', {
-    title: 'Add Flight'
+    title: 'Add Flight',
+    departsDate
   })
 }
 
@@ -80,6 +84,17 @@ function update(req, res) {
   })
 }
 
+function createTicket(req, res) {
+  Flight.findById(req.params.id)
+  .then(flight => {
+    flight.tickets.push(req.body)
+    flight.save()
+    .then(() => {
+      res.redirect(`/flights/${flight.id}`)
+    })
+  })
+}
+
 export {
   index,
   newFlight as new,
@@ -87,5 +102,6 @@ export {
   show,
   edit,
   deleteFlight as delete,
-  update
+  update,
+  createTicket
 }

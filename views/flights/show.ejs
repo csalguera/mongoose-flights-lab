@@ -23,6 +23,37 @@
       </tr>
     </tbody>
   </table>
+  <h2>Tickets</h2>
+  <% if (flight.tickets.length) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Bought</th>
+          <th>Seat</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% flight.tickets.forEach(ticket => { %>
+          <tr>
+            <td><%= ticket.createdAt.toISOString().slice(0, 16) %></td>
+            <td><%= ticket.seat %></td>
+            <td><%= ticket.price %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <h3>No Tickets Yet - buy one sonn!</h3>
+  <% } %>
+  <form
+  action="/flights/<%= flight._id %>"
+  method="POST"
+  >
+    <input type="text" name="price" required placeholder="Enter Price">
+    <input name="seat" required pattern="[A-F][1-9]\d?" placeholder="Enter Seat">
+    <button type="submit">Buy Ticket</button>
+  </form>
 </main>
 
 <%- include('../partials/footer') %>

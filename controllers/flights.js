@@ -92,6 +92,14 @@ function createTicket(req, res) {
     .then(() => {
       res.redirect(`/flights/${flight.id}`)
     })
+    .catch(error => {
+      console.log(error);
+      res.redirect('/flights')
+    })
+  })
+  .catch(error => {
+    console.log(error);
+    res.redirect('/flights')
   })
 }
 

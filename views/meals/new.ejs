@@ -1,10 +1,23 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/movies/new.css">
 <%- include('../partials/nav') %>
 
 <main>
   <h1><%= title %></h1>
-  
+  <h3>Please ensure meal isn't already part of the menu</h3>
+  <form
+  action="/meals/new"
+  method="POST"
+  autocomplete="off"
+  >
+    <input type="text" name="name" placeholder="Enter Meal">
+    <button type="submit">Add Meal</button>
+  </form>
+  <h2>Current Meals</h2>
+  <select>
+    <% meals.forEach(meal => { %>
+      <option><%= meal.name %></option>
+    <% }) %>
+  </select>
 </main>
 
 <%- include('../partials/footer') %>

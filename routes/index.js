@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { Flight } from '../models/flight.js'
+import { Meal } from '../models/meal.js'
 
 const router = Router()
 
@@ -7,9 +8,13 @@ const router = Router()
 router.get('/', function(req, res) {
   Flight.find({})
   .then(flights => {
-    res.render('index', {
-      title: 'Mongoose Flights',
-      flights: flights
+    Meal.find({})
+    .then(meals => {
+      res.render('index', {
+        title: 'Mongoose Flights',
+        flights: flights,
+        meals: meals
+      })
     })
   })
 })

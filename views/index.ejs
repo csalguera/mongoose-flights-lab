@@ -12,22 +12,40 @@
         <th>
           <h2>Airports</h2>
         </th>
+        <th>
+          <h2>Meals</h2>
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>
-          <p>American Airlines</p>
-          <p>Southwest Airlines</p>
-          <p>United Airlines</p>
-        </td>
-        <td>
-          <p>AUS</p>
-          <p>DFW</p>
-          <p>DEN</p>
-          <p>LAX</p>
-          <p>SAN</p>
-        </td>
+        <% if (flights.length) { %>
+          <td>
+            <% flights.forEach(flight => { %>
+              <p><%= flight.airline %></p>
+            <% }) %>
+          </td>
+        <% } else { %>
+          <td>No active Airlines</td>
+        <% } %>
+        <% if (flights.length) { %>
+          <td>
+            <% flights.forEach(flight => { %>
+              <p><%= flight.airport %></p>
+            <% }) %>
+          </td>
+        <% } else { %>
+          <td>No active Airports</td>
+        <% } %>
+        <% if (meals.length) { %>
+          <td>
+            <% meals.forEach(meal => { %>
+              <p><%= meal.name %></p>
+            <% }) %>
+          </td>
+        <% } else { %>
+          <td>No Meals</td>
+        <% } %>
       </tr>
     </tbody>
   </table>
